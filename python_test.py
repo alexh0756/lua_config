@@ -1,4 +1,7 @@
-def function(a, b):
+import os
+
+
+function(a, b):
     if a > b:
         print(a)
     else:
@@ -7,7 +10,6 @@ def function(a, b):
 
 def do(a):
     return print(a**2)
-
 
 
 print('completed')

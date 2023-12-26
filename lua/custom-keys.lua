@@ -1,6 +1,6 @@
 -- fetch keymap function
 local map = vim.api.nvim_set_keymap
-
+local setkey = vim.keymap.set
 -- map the key n to run the command :NvimTreeToggle
 map('n', 'n', [[:NvimTreeToggle<CR>]], {})
 
@@ -27,10 +27,10 @@ map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", { noremap = true, silen
 map("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
 
 local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+setkey('n', '<leader>ff', builtin.find_files, {})
+setkey('n', '<leader>fg', builtin.live_grep, {})
+setkey('n', '<leader>fb', builtin.buffers, {})
+setkey('n', '<leader>fh', builtin.help_tags, {})
 
 map('n', '<leader>ad', [[:! git add .<CR>]], {})
 map('n', '<leader>cm', [[:! git commit -m ]], {})
