@@ -8,4 +8,5 @@ require('custom-keys')
 require('debugging')
 require('styling')
 require('code-runner')
+require('line_numbers')
 

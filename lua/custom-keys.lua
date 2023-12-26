@@ -32,8 +32,8 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
-map('n', 'ga.', [[:term git add .<CR>:q]], {})
-map('n', 'gcs', [[:term git commit]], {})
-map('n', 'gce', [[:q]], {})
-map('n', 'gph', [[:term git push <CR>:q]], {})
-map('n', 'gpl', [[:term git pull<CR>:q]], {})
+map('n', '<leader>ad', [[:! git add .<CR>]], {})
+map('n', '<leader>cm', [[:! git commit -m ]], {})
+map('n', '<leader>ph', [[:! git push <CR>]], {})
+map('n', '<leader>pl', [[:! git pull <CR>]], {})
+
