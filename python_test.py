@@ -1,11 +1,20 @@
 import os
 
+# function(a, b):
+#     if a > b:
+#         print(a)
+#     else:
+#         print(b)
+# 
+# function(a, b):
+#     if a > b:
+#         print(a)
+#     else:
+#         print(b)
 
-function(a, b):
-    if a > b:
-        print(a)
-    else:
-        print(b)
+
+def function(a, b):
+    print(a, b)
 
 
 def do(a):
@@ -44,4 +53,3 @@ print(df)
 import numpy as np 
 import datetime
 import time
-pd.
