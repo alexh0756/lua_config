@@ -59,3 +59,6 @@ cmp.setup({
 
 	}
 })
+
+
+require("autoclose").setup()

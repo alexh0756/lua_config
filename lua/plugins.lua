@@ -42,5 +42,5 @@ return require('packer').startup(function(use)
 		use "rebelot/kanagawa.nvim"
 		use "bluz71/vim-nightfly-colors"
 		use 'hkupty/iron.nvim'
-
+		use 'm4xshen/autoclose.nvim'
 	end)

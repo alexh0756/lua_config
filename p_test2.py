@@ -7,6 +7,7 @@ import numpy as np
 print(os.path.dirname(__file__))
 print('hello world')
 
+pd.DataFrame()
 
 def sum_axis(df):
 
