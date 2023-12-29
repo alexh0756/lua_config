@@ -22,6 +22,7 @@ return require('packer').startup(function(use)
 				'nvim-tree/nvim-web-devicons',
 			},
 		}
+		use 'nvim-treesitter/nvim-treesitter'
 		-- DAP for Debugging
 		use 'mfussenegger/nvim-dap'
 		use {
