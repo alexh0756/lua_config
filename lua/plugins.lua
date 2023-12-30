@@ -37,6 +37,9 @@ return require('packer').startup(function(use)
 			-- or                            , branch = '0.1.x',
   			requires = { {'nvim-lua/plenary.nvim'} }
 		}
+
+		-- git integration
+		use 'NeogitOrg/neogit'
 		
 		-- syntax highlighting
 		use 'nvim-treesitter/nvim-treesitter'

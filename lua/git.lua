@@ -1,5 +1,6 @@
 -- functions for git integration
--- require('gitsigns').setup()
+local neogit = require('neogit')
+neogit.setup()
 
 require('gitsigns').setup {
   signs = {
