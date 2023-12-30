@@ -22,7 +22,6 @@ return require('packer').startup(function(use)
 				'nvim-tree/nvim-web-devicons',
 			},
 		}
-		use 'nvim-treesitter/nvim-treesitter'
 		-- DAP for Debugging
 		use 'mfussenegger/nvim-dap'
 		use {
@@ -32,16 +31,47 @@ return require('packer').startup(function(use)
 			}
 		}
 
+		-- file finder
 		use {
   			'nvim-telescope/telescope.nvim', tag = '0.1.5',
 			-- or                            , branch = '0.1.x',
   			requires = { {'nvim-lua/plenary.nvim'} }
 		}
 		
+		-- syntax highlighting
+		use 'nvim-treesitter/nvim-treesitter'
+
+		-- themes
 		use 'Mofiqul/dracula.nvim'
 		use 'navarasu/onedark.nvim'
 		use "rebelot/kanagawa.nvim"
 		use "bluz71/vim-nightfly-colors"
+		use "bluz71/vim-moonfly-colors"
+		use { 'catppuccin/nvim', as = 'catppuccin' }
+		use 'EdenEast/nightfox.nvim'
+		
+
+		-- used to send python to the command line
 		use 'hkupty/iron.nvim'
+
+		-- git highlighting
+		use 'lewis6991/gitsigns.nvim'
+
+		-- add status bar at bottom of nvim
+		use 'freddiehaddad/feline.nvim'
+
+		-- used to auto close brackets
 		use 'm4xshen/autoclose.nvim'
+
+		-- front page of nvim
+		use { 
+			'nvimdev/dashboard-nvim',
+			event = 'VimEnter',
+			config = function()
+				require('dashboard').setup {
+					theme = 'hyper'
+				}
+			end,
+			requires = { 'nvim-tree/nvim-web-devicons' }
+		}
 	end)

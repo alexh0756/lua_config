@@ -37,9 +37,6 @@ map('n', '<leader>cm', [[:! git commit -m ]], {})
 map('n', '<leader>ph', [[:! git push <CR>]], {})
 map('n', '<leader>pl', [[:! git pull <CR>]], {})
 
-local function gen_git_commit_message()
-	--local message = vim.fn.input('input git commit message: ')
-	return string.format("[[:! git commit -m %s]]", io.read('input git commit message: '))
 
-end
-vim.keymap.set('n', '0', string.format("[[:! git commit -m %s]]", vim.fn.input('input git commit message: ')))
+
+
