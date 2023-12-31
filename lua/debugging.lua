@@ -15,6 +15,13 @@ dap.listeners.before.event_exiting['dapui_config'] = function()
 	dapui.close()
 end
 
+local sign = vim.fn.sign_define
+
+sign("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = ""})
+sign("DapBreakpointCondition", { text = "●", texthl = "DapBreakpointCondition", linehl = "", numhl = ""})
+sign("DapLogPoint", { text = "◆", texthl = "DapLogPoint", linehl = "", numhl = ""})
+
+
 dap.adapters.delve = {
 	type = 'server',
 	port = '${port}',

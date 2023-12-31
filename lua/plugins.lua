@@ -54,6 +54,12 @@ return require('packer').startup(function(use)
 		-- syntax highlighting
 		use 'nvim-treesitter/nvim-treesitter'
 
+		-- keybindings for comment in/out
+		use 'preservim/nerdcommenter'
+
+		-- ctrl+d multi select
+		use 'mg979/vim-visual-multi'
+
 		-- themes
 		use 'Mofiqul/dracula.nvim'
 		use 'navarasu/onedark.nvim'
@@ -72,6 +78,7 @@ return require('packer').startup(function(use)
 
 		-- add status bar at bottom of nvim
 		use 'freddiehaddad/feline.nvim'
+		use 'nvim-lualine/lualine.nvim'
 
 		-- used to auto close brackets
 		use 'm4xshen/autoclose.nvim'

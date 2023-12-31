@@ -32,10 +32,10 @@ setkey('n', '<leader>fg', builtin.live_grep, {})
 setkey('n', '<leader>fb', builtin.buffers, {})
 setkey('n', '<leader>fh', builtin.help_tags, {})
 
-map('n', '<leader>ad', [[:! git add .<CR>]], {})
-map('n', '<leader>cm', [[:! git commit -m ]], {})
-map('n', '<leader>ph', [[:! git push <CR>]], {})
-map('n', '<leader>pl', [[:! git pull <CR>]], {})
+-- map('n', '<leader>ad', [[:! git add .<CR>]], {})
+-- map('n', '<leader>cm', [[:! git commit -m ]], {})
+-- map('n', '<leader>ph', [[:! git push <CR>]], {})
+-- map('n', '<leader>pl', [[:! git pull <CR>]], {})
 
-
-
+-- git hotkeys
+setkey('n', '<leader>go', [[: lua require'neogit'.open()<CR>]], {})
