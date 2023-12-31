@@ -45,6 +45,3 @@ require('gitsigns').setup {
   },
 }
 
-function gen_message() 
-	return vim.fn.input('Input message: ')
-end

@@ -9,5 +9,6 @@ require('debugging')
 require('styling')
 require('code-runner')
 require('line_numbers')
-require('gitsigns')
-
+require('git')
+-- require('gitsigns')
+require('harpoon-config')

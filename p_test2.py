@@ -31,3 +31,8 @@ print(df)
 df = sum_axis(df)
 print(df)
 print()
+
+
+import functions
+
+print(functions.sum(a, b))

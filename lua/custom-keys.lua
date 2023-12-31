@@ -39,4 +39,3 @@ map('n', '<leader>pl', [[:! git pull <CR>]], {})
 
 
 
-
