@@ -114,7 +114,7 @@ end
 
 
 if launchJSON == 'true' then
-	require('dap.ext.vscode')
+	require('dap.ext.vscode').load_launchjs()
 else
 	dap.configurations.python = {
 	  {
