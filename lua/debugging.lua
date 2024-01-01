@@ -2,21 +2,43 @@
 local dap = require('dap')
 -- setup DapUI
 local dapui = require('dapui')
-dapui.setup()
+dapui.setup({layouts = { {
+        elements = { {
+            id = "repl",
+            size = 0.8
+          }, {
+            id = "scopes",
+            size = 0.2
+          } },
+        position = "bottom",
+        size = 10
+      }, {
+        elements = { {
+            id = "console",
+            size = 0.25
+          }, {
+            id = "breakpoints",
+            size = 0.25
+          }, {
+            id = "stacks",
+            size = 0.25
+          }, {
+            id = "watches",
+            size = 0.10
+          } },
+        position = "right",
+        size = 50
+      } },
+    })
 
 
 file = '.config/python.txt'
 require('utils')
 local config_file = getScriptDir(debug.getinfo(1).source)
 local configPath = config_file .. file
-print(configPath)
 local config_data = lines_from(configPath)
-print(config_file)
-print(config_data)
 local pythonPath = config_data[1]
 local launchJSON = config_data[2]
-print(pythonPath, launchJSON)
-
 
 -- Dap fires events before and after, trigger dap UI when we see them
 dap.listeners.after.event_initialized['dapui_config'] = function()
@@ -119,8 +141,17 @@ else
 	    end;
 	  },
 	}
-	print('launch is false')
 end
 
+require("cmp").setup({
+  enabled = function()
+    return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt"
+        or require("cmp_dap").is_dap_buffer()
+  end
+})
 
-vnoremap <M-k> <Cmd>lua require("dapui").eval()<CR>
+require("cmp").setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
+  sources = {
+    { name = "dap" },
+  },
+})

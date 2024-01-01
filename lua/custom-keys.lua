@@ -22,7 +22,7 @@ map('n', '<F11>', [[:lua require'dap'.step_into()<CR>]], {})
 map('n', '<F12>', [[:lua require'dap'.step_out()<CR>]], {})
 map('n', '<F6>', [[:lua require'dap'.repl.open()<CR>]], {})
 map('n', 'dl', [[:lua require'dap'.run_last()<CR>]], {})
-map('n', '<leader>dr', [[:lua require'dapui'.float_element(2, {width = 500, height = 500})<CR>]], {})
+map('n', '<leader>dr', [[:lua require'dapui'.float_element('repl', {width = 50, height = 80, position='right'})<CR>]], {})
 map('n', '<leader>de', [[:lua require'dapui'.eval()<CR>]], {})
 setkey('v', '<leader>de', function() require'dapui'.eval() end, {})
 -- vnoremap <M-k> <Cmd>lua require("dapui").eval()<CR>

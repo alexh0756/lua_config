@@ -31,6 +31,9 @@ return require('packer').startup(function(use)
 			}
 		}
 
+		-- support repl autocomplete
+		use 'rcarriga/cmp-dap'
+
 		-- file finder
 		use {
   			'nvim-telescope/telescope.nvim', tag = '0.1.5',
@@ -82,6 +85,10 @@ return require('packer').startup(function(use)
 
 		-- used to auto close brackets
 		use 'm4xshen/autoclose.nvim'
+		use {
+			'windwp/nvim-autopairs',
+			config = function() require('nvim-autopairs').setup {} end
+		}
 
 		-- front page of nvim
 		use { 

@@ -28,6 +28,13 @@ r = "something"
 df = pd.DataFrame({"x": [1, 2, 3, 4], "y": [4, 3, 2, 1]})
 print(df)
 
+df["z"] = df["x"] + df["y"]
+
+
+def function(c, d):
+    return c + d
+
+
 df = sum_axis(df)
 print(df)
 print()
