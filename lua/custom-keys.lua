@@ -7,25 +7,29 @@ map('n', 'n', [[:NvimTreeToggle<CR>]], {})
 -- CTRL+s to save file
 map('n', '<C-s>', [[:w<CR>]], {})
 
--- Nvim-dap keymappings
-map('n', '<F5>', [[:lua require'dap'.continue()<CR>]], {})
 -- CTRL+d will enter debugmode and remove NvimTree
 map('n', '<C-d>', [[:NvimTreeClose<CR> :lua require'dapui'.toggle()<CR>]], {})
--- CTRL+b sets a breakpoint
-map('n', '<C-b>', [[:lua require'dap'.toggle_breakpoint()<CR>]], {})
--- Press CTRL+I to set log points
-map('n', '<C-l>', [[:lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log Point Msg: '))<CR> ]], {})
 
+-- Nvim-dap keymappings
+-- start and stop debugger
+map('n', '<F5>', [[:lua require'dap'.continue()<CR>]], {})
+map('n', '<C-S-F5>', [[:lua require'dap'.restart()<CR>]], {})
+map('n', '<C-F5>', [[:lua require'dap'.terminate()<CR>]], {})
+map('n', '<F4>', [[:lua require'dap'.pause()<CR>]], {})
+-- breakpoints
+map('n', '<C-b>', [[:lua require'dap'.toggle_breakpoint()<CR>]], {})
+map('n', '<C-l>', [[:lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log Point Msg: '))<CR> ]], {})
 -- Press f10 to set over
-map('n', '<F10>', [[:lua require'dap'.set_over()<CR>]], {})
+map('n', '<F10>', [[:lua require'dap'.step_over()<CR>]], {})
 map('n', '<F11>', [[:lua require'dap'.step_into()<CR>]], {})
 map('n', '<F12>', [[:lua require'dap'.step_out()<CR>]], {})
-map('n', '<F6>', [[:lua require'dap'.repl.open()<CR>]], {})
+map('n', '<C-<>', [[:lua require'dap'.up()<CR>]], {})
+map('n', '<C->>', [[:lua require'dap'.down()<CR>]], {})
+map('n', '<F6>', [[:lua require'dap'.repl.toggle()<CR>]], {})
 map('n', 'dl', [[:lua require'dap'.run_last()<CR>]], {})
 map('n', '<leader>dr', [[:lua require'dapui'.float_element('repl', {width = 50, height = 80, position='right'})<CR>]], {})
 map('n', '<leader>de', [[:lua require'dapui'.eval()<CR>]], {})
 setkey('v', '<leader>de', function() require'dapui'.eval() end, {})
--- vnoremap <M-k> <Cmd>lua require("dapui").eval()<CR>
 
 
 map("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", { noremap = true, silent = true })

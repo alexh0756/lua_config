@@ -79,3 +79,21 @@ vim.keymap.set('n', '<leader>pp', function() add_line(vim.fn.getreg('"')) end, {
 vim.api.nvim_set_keymap('v', '<leader>e', [[:lua require('dap').repl.execute(vim.fn.getreg('"') <CR> <leader>dri]], {}) 
 vim.api.nvim_set_keymap('n', '<leader>e', [[:lua require('dap').repl.execute(vim.fn.getreg('"')]], {}) 
 
+
+local BinaryFormat = package.cpath:match("%p[\\|/]?%p(%a+)")
+if BinaryFormat == "dll" then
+    function os.name()
+        return "Windows"
+    end
+elseif BinaryFormat == "so" then
+    function os.name()
+        return "Linux"
+    end
+elseif BinaryFormat == "dylib" then
+    function os.name()
+        return "MacOS"
+    end
+end
+BinaryFormat = nil
+
+print(os.name())
