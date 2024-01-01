@@ -23,7 +23,7 @@ def minus_nums(a, b):
 b = "definition"
 
 
-a = "something"
+r = "something"
 
 df = pd.DataFrame({"x": [1, 2, 3, 4], "y": [4, 3, 2, 1]})
 print(df)

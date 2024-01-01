@@ -32,8 +32,11 @@ end
 local sign = vim.fn.sign_define
 
 sign("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = ""})
-sign("DapBreakpointCondition", { text = "●", texthl = "DapBreakpointCondition", linehl = "", numhl = ""})
-sign("DapLogPoint", { text = "◆", texthl = "DapLogPoint", linehl = "", numhl = ""})
+sign("DapBreakpointCondition", { text = "", texthl = "DapBreakpointCondition", linehl = "", numhl = ""})
+sign("DapLogPoint", { text = "", texthl = "DapLogPoint", linehl = "", numhl = ""})
+
+-- vim.fn.sign_define('DapBreakpoint',{ text ='󱞪', texthl ='', linehl ='', numhl =''})
+vim.fn.sign_define('DapStopped',{ text ='󱞪', texthl ='', linehl ='', numhl =''})
 
 
 dap.adapters.delve = {
@@ -78,6 +81,7 @@ dap.adapters.python = function(cb, config)
     cb({
       type = 'executable',
       command = pythonPath,
+      -- command = '/Users/alex/.virtualenvs/debugpy/bin/python',
       args = { '-m', 'debugpy.adapter' },
       options = {
         source_filetype = 'python',
@@ -86,13 +90,9 @@ dap.adapters.python = function(cb, config)
   end
 end
 
-print('launch conditional state', launchJSON)
-print('launch true', launchJSON=='true')
-print('launch false', launchJSON=='false')
-
 
 if launchJSON == 'true' then
-	print('launch is true')	
+	require('dap.ext.vscode')
 else
 	dap.configurations.python = {
 	  {
@@ -121,3 +121,6 @@ else
 	}
 	print('launch is false')
 end
+
+
+vnoremap <M-k> <Cmd>lua require("dapui").eval()<CR>
