@@ -37,6 +37,9 @@ def function(c, d):
 
 df = sum_axis(df)
 print(df)
+import matplotlib.pyplot as plt
+plt.plot(df['x'], df['y'])
+plt.show()
 print()
 
 

@@ -75,6 +75,7 @@ vim.keymap.set('n', '<leader>pp', function() add_line(vim.fn.getreg('"')) end, {
 -- function to allow for sending commands straight to repl
 -- function send_to_repl(line)
 
-vim.keymap.set('n', '<leader>e', function() require('dap').repl.execute(vim.fn.getreg('"')) end)
+-- vim.keymap.set('n', '<leader>e', function() require('dap').repl.execute(vim.fn.getreg('"')) end)
 vim.api.nvim_set_keymap('v', '<leader>e', [[:lua require('dap').repl.execute(vim.fn.getreg('"') <CR> <leader>dri]], {}) 
+vim.api.nvim_set_keymap('n', '<leader>e', [[:lua require('dap').repl.execute(vim.fn.getreg('"')]], {}) 
 

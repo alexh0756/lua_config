@@ -1,35 +1,35 @@
 -- fetch the dap plugin
 local dap = require('dap')
 -- setup DapUI
-local dapui = require('dapui')
-dapui.setup({layouts = { {
-        elements = { {
-            id = "repl",
-            size = 0.8
-          }, {
-            id = "scopes",
-            size = 0.2
-          } },
-        position = "bottom",
-        size = 10
-      }, {
-        elements = { {
-            id = "console",
-            size = 0.25
-          }, {
-            id = "breakpoints",
-            size = 0.25
-          }, {
-            id = "stacks",
-            size = 0.25
-          }, {
-            id = "watches",
-            size = 0.10
-          } },
-        position = "right",
-        size = 50
-      } },
-    })
+-- local dapui = require('dapui')
+-- dapui.setup({layouts = { {
+--         elements = { {
+--             id = "repl",
+--             size = 0.8
+--           }, {
+--             id = "scopes",
+--             size = 0.2
+--           } },
+--         position = "bottom",
+--         size = 10
+--       }, {
+--         elements = { {
+--             id = "console",
+--             size = 0.25
+--           }, {
+--             id = "breakpoints",
+--             size = 0.25
+--           }, {
+--             id = "stacks",
+--             size = 0.25
+--           }, {
+--             id = "watches",
+--             size = 0.10
+--           } },
+--         position = "right",
+--         size = 50
+--       } },
+--     })
 
 
 file = '.config/python.txt'
@@ -41,15 +41,15 @@ local pythonPath = config_data[1]
 local launchJSON = config_data[2]
 
 -- Dap fires events before and after, trigger dap UI when we see them
-dap.listeners.after.event_initialized['dapui_config'] = function()
-	dapui.open()
-end
-dap.listeners.before.event_terminated['dapui_config'] = function()
-	dapui.close()
-end
-dap.listeners.before.event_exiting['dapui_config'] = function()
-	dapui.close()
-end
+-- dap.listeners.after.event_initialized['dapui_config'] = function()
+-- 	dapui.open()
+-- end
+-- dap.listeners.before.event_terminated['dapui_config'] = function()
+-- 	dapui.close()
+-- end
+-- dap.listeners.before.event_exiting['dapui_config'] = function()
+-- 	dapui.close()
+-- end
 
 local sign = vim.fn.sign_define
 
