@@ -41,8 +41,9 @@ return require('packer').startup(function(use)
   			requires = { 
 				{'nvim-lua/plenary.nvim'},
 				{'BurntSushi/ripgrep'}
+			}
 		}
-		}
+		use 'nvim-telescope/telescope-live-grep-args.nvim'
 
 		use {
 			'ThePrimeagen/harpoon',

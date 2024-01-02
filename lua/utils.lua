@@ -96,4 +96,3 @@ elseif BinaryFormat == "dylib" then
 end
 BinaryFormat = nil
 
-print(os.name())
