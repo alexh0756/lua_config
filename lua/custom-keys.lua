@@ -16,6 +16,9 @@ map('n', '<F5>', [[:lua require'dap'.continue()<CR>]], {})
 map('n', '<C-S-F5>', [[:lua require'dap'.restart()<CR>]], {})
 map('n', '<C-F5>', [[:lua require'dap'.terminate()<CR>]], {})
 map('n', '<F4>', [[:lua require'dap'.pause()<CR>]], {})
+-- reload json
+map('n', '<leader>jr', [[:lua require('dap.ext.vscode').load_launchjs('.vscode/launch_nvim.json')<CR>]], {})
+
 -- breakpoints
 map('n', '<C-b>', [[:lua require'dap'.toggle_breakpoint()<CR>]], {})
 map('n', '<C-l>', [[:lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log Point Msg: '))<CR> ]], {})
