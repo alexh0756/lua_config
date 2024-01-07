@@ -30,7 +30,7 @@ map('n', '<C-<>', [[:lua require'dap'.up()<CR>]], {})
 map('n', '<C->>', [[:lua require'dap'.down()<CR>]], {})
 map('n', '<F6>', [[:lua require'dap'.repl.toggle()<CR>]], {})
 map('n', 'dl', [[:lua require'dap'.run_last()<CR>]], {})
-map('n', '<leader>dr', [[:lua require'dapui'.float_element('repl', {width = 50, height = 80, position='right'})<CR>]], {})
+map('n', '<leader>dr', [[:lua require'dapui'.float_element('repl', {width = 200, height = 50, position='right'})<CR>]], {})
 map('n', '<leader>de', [[:lua require'dapui'.eval()<CR>]], {})
 setkey('v', '<leader>de', function() require'dapui'.eval() end, {})
 
