@@ -62,7 +62,7 @@ return require('packer').startup(function(use)
 		use 'preservim/nerdcommenter'
 
 		-- ctrl+d multi select
-		use 'mg979/vim-visual-multi'
+		-- use 'mg979/vim-visual-multi'
 
 		-- themes
 		use 'Mofiqul/dracula.nvim'
