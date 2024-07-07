@@ -25,17 +25,13 @@ return require('packer').startup(function(use)
 		-- DAP for Debugging
 		use 'mfussenegger/nvim-dap'
 
-		use {"rcarriga/nvim-dap-ui", version = '3.9.3', dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"} }
-		use "nvim-neotest/nvim-nio"
-
-
-		--use {
-		--        'rcarriga/nvim-dap-ui',
-		--        requires = {
-		--                'mfussenegger/nvim-dap',
-		--                'nvim-neotest/nvim-nio'
-		--        }
-		--}
+		use {
+			'rcarriga/nvim-dap-ui',
+			requires = {
+				'mfussenegger/nvim-dap',
+				'nvim-neotest/nvim-nio'
+			}
+		}
 
 		-- support repl autocomplete
 		use 'rcarriga/cmp-dap'
@@ -56,7 +52,6 @@ return require('packer').startup(function(use)
 			branch = 'harpoon2',
 			requires = { { 'nvim-lua/plenary.nvim' } }
 		}
-		-- use 'MeanderingProgrammer/harpoon-core.nvim'
 
 		-- git integration
 		use 'NeogitOrg/neogit'
@@ -68,17 +63,10 @@ return require('packer').startup(function(use)
 		use 'preservim/nerdcommenter'
 
 		-- ctrl+d multi select
-		-- use 'mg979/vim-visual-multi'
+		use 'mg979/vim-visual-multi'
 
 		-- themes
-		--use 'Mofiqul/dracula.nvim'
-		--use 'navarasu/onedark.nvim'
-		--use "rebelot/kanagawa.nvim"
-		--use "bluz71/vim-nightfly-colors"
-		--use "bluz71/vim-moonfly-colors"
-		--use { 'catppuccin/nvim', as = 'catppuccin' }
 		use 'EdenEast/nightfox.nvim'
-		
 
 		-- used to send python to the command line
 		use 'hkupty/iron.nvim'
@@ -96,16 +84,4 @@ return require('packer').startup(function(use)
 			'windwp/nvim-autopairs',
 			config = function() require('nvim-autopairs').setup {} end
 		}
-
-		-- front page of nvim
-		--use { 
-		--        'nvimdev/dashboard-nvim',
-		--        event = 'VimEnter',
-		--        config = function()
-		--                require('dashboard').setup {
-		--                        theme = 'hyper'
-		--                }
-		--        end,
-		--        requires = { 'nvim-tree/nvim-web-devicons' }
-		--}
 	end)

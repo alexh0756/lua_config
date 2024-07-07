@@ -20,8 +20,8 @@ map('n', '<F4>', [[:lua require'dap'.pause()<CR>]], {})
 map('n', '<leader>jr', [[:lua require('dap.ext.vscode').load_launchjs('.vscode/launch_nvim.json')<CR>]], {})
 
 -- breakpoints
-map('n', '<leader>bb', [[:lua require'dap'.toggle_breakpoint()<CR>]], {})
-map('n', '<leader>bl', [[:lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log Point Msg: '))<CR> ]], {})
+map('n', '<C-b>', [[:lua require'dap'.toggle_breakpoint()<CR>]], {})
+map('n', '<C-l>', [[:lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log Point Msg: '))<CR> ]], {})
 -- Press f10 to set over
 map('n', '<F10>', [[:lua require'dap'.step_over()<CR>]], {})
 map('n', '<F11>', [[:lua require'dap'.step_into()<CR>]], {})
@@ -47,21 +47,43 @@ setkey('n', '<leader>fh', builtin.help_tags, {})
 -- git hotkeys
 setkey('n', '<leader>go', [[: lua require'neogit'.open()<CR>]], {})
 
---harpoon key bindings
-vim.keymap.set("n", "<C-e>", function() toggle_telescope(harpoon:list()) end,
-    { desc = "Open harpoon window" })
 
 -- REQUIRED
+local harpoon = require("harpoon")
+harpoon:setup()
 
-vim.keymap.set("n", "<leader>a", function() harpoon:list():append() end)
+-- basic telescope configuration
+local conf = require("telescope.config").values
+local function toggle_telescope(harpoon_files)
+    local file_paths = {}
+    for _, item in ipairs(harpoon_files.items) do
+        table.insert(file_paths, item.value)
+    end
+
+    require("telescope.pickers").new({}, {
+        prompt_title = "Harpoon",
+        finder = require("telescope.finders").new_table({
+            results = file_paths,
+        }),
+        previewer = conf.file_previewer({}),
+        sorter = conf.generic_sorter({}),
+    }):find()
+end
+
+--vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+vim.keymap.set("n", "<C-e>", function() toggle_telescope(harpoon:list()) end,
+    { desc = "Open harpoon window" })
+vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
 vim.keymap.set('n', '<leader>hr', function() harpoon:list():remove() end, {})
 vim.keymap.set('n', '<leader>hc', function() harpoon:list():clear() end, {})
 
-vim.keymap.set("n", "<C-h>", function() harpoon:list():select(1) end)
-vim.keymap.set("n", "<C-t>", function() harpoon:list():select(2) end)
-vim.keymap.set("n", "<C-n>", function() harpoon:list():select(3) end)
-vim.keymap.set("n", "<C-s>", function() harpoon:list():select(4) end)
+--vim.keymap.set("n", "<C-h>", function() harpoon:list():select(1) end)
+--vim.keymap.set("n", "<C-t>", function() harpoon:list():select(2) end)
+--vim.keymap.set("n", "<C-n>", function() harpoon:list():select(3) end)
+--vim.keymap.set("n", "<C-s>", function() harpoon:list():select(4) end)
 
 -- Toggle previous & next buffers stored within Harpoon list
 vim.keymap.set("n", "<C-,>", function() harpoon:list():prev() end)
 vim.keymap.set("n", "<C-.>", function() harpoon:list():next() end)
+
+

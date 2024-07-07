@@ -12,6 +12,7 @@ local config_data = lines_from(configPath)
 local pythonPath = config_data[1]
 local launchJSON = config_data[2]
 
+
 -- define layout parameters
 dapui.setup({layouts = { {
         elements = { {
@@ -116,7 +117,7 @@ dap.adapters.python = function(cb, config)
   end
 end
 
-
+require('utils')
 if os.name() == 'Windows' then
 	pythonCommand = 'python'
 else
@@ -146,7 +147,7 @@ else
 	      elseif vim.fn.executable(cwd .. '/.venv/bin/python') == 1 then
 	        return cwd .. '/.venv/bin/python'
 	      else
-	        return pythonCommand
+	        return 'python3' --pythonCommand
 	      end
 	    end;
 	  },

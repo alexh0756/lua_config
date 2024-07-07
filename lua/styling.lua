@@ -1,22 +1,8 @@
---vim.cmd("colorscheme kanagawa-wave")
---vim.cmd [[colorscheme nightfly]]
--- vim.cmd [[colorscheme moonfly]]
-
--- require('onedark').setup {
---     style = 'darker'
--- }
--- require('onedark').load()
-
---colorscheme catppuccin "catppuccin-mocha"
--- require('catppuccin').setup()
--- vim.cmd.colorscheme "catppuccin"
-
-
 -- colorscheme nightfox
 vim.cmd("colorscheme terafox")
 
-require('utils')
-if os.name() ~= 'Windows' then
+--require('utils')
+--if os.name() ~= 'Windows' then
 	require'nvim-treesitter.configs'.setup {
 	  -- A list of parser names, or "all" (the five listed parsers should always be installed)
 	  ensure_installed = {
@@ -61,30 +47,5 @@ if os.name() ~= 'Windows' then
 	    additional_vim_regex_highlighting = false,
 	  },
 	}
-end
-
---require('kanagawa').setup({
---    compile = false,             -- enable compiling the colorscheme
---    undercurl = true,            -- enable undercurls
---    commentStyle = { italic = true },
---    functionStyle = {},
---    keywordStyle = { italic = true},
---    statementStyle = { bold = true },
---    typeStyle = {},
---    transparent = false,         -- do not set background color
---    dimInactive = false,         -- dim inactive window `:h hl-NormalNC`
---    terminalColors = true,       -- define vim.g.terminal_color_{0,17}
---    colors = {                   -- add/modify theme and palette colors
---        palette = {},
---        theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
---    },
---    overrides = function(colors) -- add/modify highlights
---        return {}
---    end,
---    theme = "dragon",              -- Load "wave" theme when 'background' option is not set
---    background = {               -- map the value of 'background' option to a theme
---        dark = "dragon",           -- try "dragon" !
---        light = "lotus"
---    },
---})
+--end
 
