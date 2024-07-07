@@ -44,10 +44,24 @@ setkey('n', '<leader>fg', builtin.live_grep, {})
 setkey('n', '<leader>fb', builtin.buffers, {})
 setkey('n', '<leader>fh', builtin.help_tags, {})
 
--- map('n', '<leader>ad', [[:! git add .<CR>]], {})
--- map('n', '<leader>cm', [[:! git commit -m ]], {})
--- map('n', '<leader>ph', [[:! git push <CR>]], {})
--- map('n', '<leader>pl', [[:! git pull <CR>]], {})
-
 -- git hotkeys
 setkey('n', '<leader>go', [[: lua require'neogit'.open()<CR>]], {})
+
+--harpoon key bindings
+vim.keymap.set("n", "<C-e>", function() toggle_telescope(harpoon:list()) end,
+    { desc = "Open harpoon window" })
+
+-- REQUIRED
+
+vim.keymap.set("n", "<leader>a", function() harpoon:list():append() end)
+vim.keymap.set('n', '<leader>hr', function() harpoon:list():remove() end, {})
+vim.keymap.set('n', '<leader>hc', function() harpoon:list():clear() end, {})
+
+vim.keymap.set("n", "<C-h>", function() harpoon:list():select(1) end)
+vim.keymap.set("n", "<C-t>", function() harpoon:list():select(2) end)
+vim.keymap.set("n", "<C-n>", function() harpoon:list():select(3) end)
+vim.keymap.set("n", "<C-s>", function() harpoon:list():select(4) end)
+
+-- Toggle previous & next buffers stored within Harpoon list
+vim.keymap.set("n", "<C-,>", function() harpoon:list():prev() end)
+vim.keymap.set("n", "<C-.>", function() harpoon:list():next() end)

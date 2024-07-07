@@ -2,34 +2,6 @@
 local dap = require('dap')
 -- setup DapUI
 local dapui = require('dapui')
-dapui.setup({layouts = { {
-        elements = { {
-            id = "repl",
-            size = 0.8
-          }, {
-            id = "scopes",
-            size = 0.2
-          } },
-        position = "bottom",
-        size = 10
-      }, {
-        elements = { {
-            id = "console",
-            size = 0.25
-          }, {
-            id = "breakpoints",
-            size = 0.25
-          }, {
-            id = "stacks",
-            size = 0.25
-          }, {
-            id = "watches",
-            size = 0.10
-          } },
-        position = "right",
-        size = 50
-      } },
-    })
 
 
 file = '.config/python.txt'
@@ -39,6 +11,38 @@ local configPath = config_file .. file
 local config_data = lines_from(configPath)
 local pythonPath = config_data[1]
 local launchJSON = config_data[2]
+
+-- define layout parameters
+dapui.setup({layouts = { {
+        elements = { {
+            id = "console",
+            size = 0.15
+          }, {
+            id = "breakpoints",
+            size = 0.15
+          }, {
+            id = "watches",
+            size = 0.15
+          }, {
+            id = "stacks",
+            size = 0.20
+          }, {
+            id = "scopes",
+            size = 0.35
+          } },
+        position = "right",
+        size = 55
+      }, {
+        elements = { {
+            id = "repl",
+            size = 0.8
+          } },
+        position = "bottom",
+        size = 10
+      } },
+    })
+
+
 
 -- Dap fires events before and after, trigger dap UI when we see them
 dap.listeners.after.event_initialized['dapui_config'] = function()
@@ -57,10 +61,10 @@ sign("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", num
 sign("DapBreakpointCondition", { text = "", texthl = "DapBreakpointCondition", linehl = "", numhl = ""})
 sign("DapLogPoint", { text = "", texthl = "DapLogPoint", linehl = "", numhl = ""})
 
--- vim.fn.sign_define('DapBreakpoint',{ text ='󱞪', texthl ='', linehl ='', numhl =''})
 vim.fn.sign_define('DapStopped',{ text ='', texthl ='', linehl ='', numhl =''})
 
 
+-- debug go 
 dap.adapters.delve = {
 	type = 'server',
 	port = '${port}',
@@ -85,6 +89,7 @@ dap.configurations.go = {
 	}
 }
 
+-- debug python
 dap.adapters.python = function(cb, config)
   if config.request == 'attach' then
     ---@diagnostic disable-next-line: undefined-field
@@ -103,7 +108,6 @@ dap.adapters.python = function(cb, config)
     cb({
       type = 'executable',
       command = pythonPath,
-      -- command = '/Users/alex/.virtualenvs/debugpy/bin/python',
       args = { '-m', 'debugpy.adapter' },
       options = {
         source_filetype = 'python',
@@ -112,6 +116,12 @@ dap.adapters.python = function(cb, config)
   end
 end
 
+
+if os.name() == 'Windows' then
+	pythonCommand = 'python'
+else
+	pythonCommand = 'python3'
+end
 
 if launchJSON == 'true' then
 	require('dap.ext.vscode').load_launchjs('.vscode/launch_nvim.json')
@@ -136,7 +146,7 @@ else
 	      elseif vim.fn.executable(cwd .. '/.venv/bin/python') == 1 then
 	        return cwd .. '/.venv/bin/python'
 	      else
-	        return '/usr/bin/python3'
+	        return pythonCommand
 	      end
 	    end;
 	  },

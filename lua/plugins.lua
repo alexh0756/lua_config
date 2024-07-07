@@ -24,12 +24,18 @@ return require('packer').startup(function(use)
 		}
 		-- DAP for Debugging
 		use 'mfussenegger/nvim-dap'
-		use {
-			'rcarriga/nvim-dap-ui',
-			requires = {
-				'mfussenegger/nvim-dap'
-			}
-		}
+
+		use {"rcarriga/nvim-dap-ui", version = '3.9.3', dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"} }
+		use "nvim-neotest/nvim-nio"
+
+
+		--use {
+		--        'rcarriga/nvim-dap-ui',
+		--        requires = {
+		--                'mfussenegger/nvim-dap',
+		--                'nvim-neotest/nvim-nio'
+		--        }
+		--}
 
 		-- support repl autocomplete
 		use 'rcarriga/cmp-dap'
@@ -65,12 +71,12 @@ return require('packer').startup(function(use)
 		use 'mg979/vim-visual-multi'
 
 		-- themes
-		use 'Mofiqul/dracula.nvim'
-		use 'navarasu/onedark.nvim'
-		use "rebelot/kanagawa.nvim"
-		use "bluz71/vim-nightfly-colors"
-		use "bluz71/vim-moonfly-colors"
-		use { 'catppuccin/nvim', as = 'catppuccin' }
+		--use 'Mofiqul/dracula.nvim'
+		--use 'navarasu/onedark.nvim'
+		--use "rebelot/kanagawa.nvim"
+		--use "bluz71/vim-nightfly-colors"
+		--use "bluz71/vim-moonfly-colors"
+		--use { 'catppuccin/nvim', as = 'catppuccin' }
 		use 'EdenEast/nightfox.nvim'
 		
 
@@ -92,14 +98,14 @@ return require('packer').startup(function(use)
 		}
 
 		-- front page of nvim
-		use { 
-			'nvimdev/dashboard-nvim',
-			event = 'VimEnter',
-			config = function()
-				require('dashboard').setup {
-					theme = 'hyper'
-				}
-			end,
-			requires = { 'nvim-tree/nvim-web-devicons' }
-		}
+		--use { 
+		--        'nvimdev/dashboard-nvim',
+		--        event = 'VimEnter',
+		--        config = function()
+		--                require('dashboard').setup {
+		--                        theme = 'hyper'
+		--                }
+		--        end,
+		--        requires = { 'nvim-tree/nvim-web-devicons' }
+		--}
 	end)
