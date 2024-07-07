@@ -20,8 +20,8 @@ map('n', '<F4>', [[:lua require'dap'.pause()<CR>]], {})
 map('n', '<leader>jr', [[:lua require('dap.ext.vscode').load_launchjs('.vscode/launch_nvim.json')<CR>]], {})
 
 -- breakpoints
-map('n', '<C-b>', [[:lua require'dap'.toggle_breakpoint()<CR>]], {})
-map('n', '<C-l>', [[:lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log Point Msg: '))<CR> ]], {})
+map('n', '<leader>bb', [[:lua require'dap'.toggle_breakpoint()<CR>]], {})
+map('n', '<leader>bl', [[:lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log Point Msg: '))<CR> ]], {})
 -- Press f10 to set over
 map('n', '<F10>', [[:lua require'dap'.step_over()<CR>]], {})
 map('n', '<F11>', [[:lua require'dap'.step_into()<CR>]], {})
@@ -30,7 +30,7 @@ map('n', '<C-<>', [[:lua require'dap'.up()<CR>]], {})
 map('n', '<C->>', [[:lua require'dap'.down()<CR>]], {})
 map('n', '<F6>', [[:lua require'dap'.repl.toggle()<CR>]], {})
 map('n', 'dl', [[:lua require'dap'.run_last()<CR>]], {})
-map('n', '<leader>dr', [[:lua require'dapui'.float_element('repl', {width = 50, height = 80, position='right'})<CR>]], {})
+map('n', '<leader>dr', [[:lua require'dapui'.float_element('repl', {width = 200, height = 50, position='right'})<CR>]], {})
 map('n', '<leader>de', [[:lua require'dapui'.eval()<CR>]], {})
 setkey('v', '<leader>de', function() require'dapui'.eval() end, {})
 
